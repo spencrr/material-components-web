@@ -92,6 +92,17 @@
     }
   }
 
+  //Order per device.
+  @each $size in map-keys(variables.$breakpoints) {
+    @for $i from 1 through map-get(variables.$columns, $upper-breakpoint) {
+      &--order-#{$i}-#{$size} {
+        @include mixins.media-query_($size) {
+          @include mixins.cell-order($i)
+        }
+      }
+    }
+  }
+
   // Alignment classes.
   &--align-top {
     @include mixins.cell-align(top);
